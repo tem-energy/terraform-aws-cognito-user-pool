@@ -135,7 +135,8 @@ resource "aws_cognito_user_pool" "user_pool" {
       var.lambda_pre_sign_up,
       var.lambda_pre_token_generation,
       var.lambda_user_migration,
-      var.lambda_verify_auth_challenge_response
+      var.lambda_verify_auth_challenge_response,
+      var.lambda_custom_email_sender
     ), null) == null ? [] : [true]
 
     content {
@@ -149,6 +150,10 @@ resource "aws_cognito_user_pool" "user_pool" {
       pre_token_generation           = var.lambda_pre_token_generation
       user_migration                 = var.lambda_user_migration
       verify_auth_challenge_response = var.lambda_verify_auth_challenge_response
+      custom_email_sender {
+        lambda_arn                   = var.custom_email_sender.lambda_arn
+        lambda_version               = var.custom_email_sender.lambda_version
+      }
     }
   }
 

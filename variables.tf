@@ -429,6 +429,15 @@ variable "lambda_verify_auth_challenge_response" {
   default     = null
 }
 
+variable "lambda_custom_email_sender" {
+  description = "(Optional) Configuration block for custom email sender Lambda triggers"
+  type = object({
+    lambda_arn     = string
+    lambda_version = string
+  })
+  default = null
+}
+
 variable "schema_attributes" {
   description = "(Optional) A list of schema attributes of a user pool. You can add a maximum of 25 custom attributes."
   type        = any
