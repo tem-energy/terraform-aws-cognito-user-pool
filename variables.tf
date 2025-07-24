@@ -435,7 +435,6 @@ variable "lambda_custom_email_sender" {
     lambda_arn     = string
     lambda_version = string
   })
-  default = null
 }
 
 variable "schema_attributes" {
