@@ -151,8 +151,10 @@ resource "aws_cognito_user_pool" "user_pool" {
       user_migration                 = var.lambda_user_migration
       verify_auth_challenge_response = var.lambda_verify_auth_challenge_response
       custom_email_sender {
-        lambda_arn                   = var.custom_email_sender.lambda_arn
-        lambda_version               = var.custom_email_sender.lambda_version
+        for_each = var.lambda_custom_email_sender != null ? [true] : []
+
+        lambda_arn                   = var.lambda_custom_email_sender.lambda_arn
+        lambda_version               = var.lambda_custom_email_sender.lambda_version
       }
     }
   }
