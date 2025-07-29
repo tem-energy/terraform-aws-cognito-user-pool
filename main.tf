@@ -136,7 +136,7 @@ resource "aws_cognito_user_pool" "user_pool" {
       var.lambda_pre_token_generation,
       var.lambda_user_migration,
       var.lambda_verify_auth_challenge_response,
-      var.lambda_custom_email_sender
+      # var.lambda_custom_email_sender
     ), null) == null ? [] : [true]
 
     content {
@@ -150,7 +150,7 @@ resource "aws_cognito_user_pool" "user_pool" {
       pre_token_generation           = var.lambda_pre_token_generation
       user_migration                 = var.lambda_user_migration
       verify_auth_challenge_response = var.lambda_verify_auth_challenge_response
-      custom_email_sender {
+      custom_email_sender   {
         lambda_arn                   = "arn:aws:lambda:eu-west-1:666979728981:function:tem-stg-ew1-cognito-lambdas-custom-email-sender"
         lambda_version               = "V1_0"
       }
