@@ -150,6 +150,7 @@ resource "aws_cognito_user_pool" "user_pool" {
       pre_token_generation           = var.lambda_pre_token_generation
       user_migration                 = var.lambda_user_migration
       verify_auth_challenge_response = var.lambda_verify_auth_challenge_response
+      kms_key_id                     = "arn:aws:kms:eu-west-1:666979728981:key/1b8fe39c-6a9d-4114-bd6b-f4b6893eb9aa"
       custom_email_sender   {
         lambda_arn                   = "arn:aws:lambda:eu-west-1:666979728981:function:tem-stg-ew1-cognito-lambdas-custom-email-sender"
         lambda_version               = "V1_0"
