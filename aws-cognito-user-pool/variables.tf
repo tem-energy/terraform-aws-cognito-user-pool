@@ -430,11 +430,16 @@ variable "lambda_verify_auth_challenge_response" {
 }
 
 variable "lambda_custom_email_sender" {
-  description = "(Optional) Configuration block for custom email sender Lambda triggers"
+  description = "Configuration block for custom email sender Lambda triggers"
   type = object({
     lambda_arn     = string
     lambda_version = string
   })
+}
+
+variable "lambda_kms_key_arn" {
+  description = "The ARN of the KMS key used to encrypt the Lambda function's environment variables."
+  type        = string
 }
 
 variable "schema_attributes" {
