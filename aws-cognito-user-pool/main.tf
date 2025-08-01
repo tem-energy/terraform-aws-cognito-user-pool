@@ -124,40 +124,24 @@ resource "aws_cognito_user_pool" "user_pool" {
     }
   }
 
-  dynamic "lambda_config" {
-    for_each = try(coalesce(
-      var.lambda_create_auth_challenge,
-      var.lambda_custom_message,
-      var.lambda_define_auth_challenge,
-      var.lambda_post_authentication,
-      var.lambda_post_confirmation,
-      var.lambda_pre_authentication,
-      var.lambda_pre_sign_up,
-      var.lambda_pre_token_generation,
-      var.lambda_user_migration,
-      var.lambda_verify_auth_challenge_response,
-      var.lambda_custom_email_sender,
-      var.lambda_kms_key_arn
-    ), [])
-
-    content {
-      create_auth_challenge          = var.lambda_create_auth_challenge
-      custom_message                 = var.lambda_custom_message
-      define_auth_challenge          = var.lambda_define_auth_challenge
-      post_authentication            = var.lambda_post_authentication
-      post_confirmation              = var.lambda_post_confirmation
-      pre_authentication             = var.lambda_pre_authentication
-      pre_sign_up                    = var.lambda_pre_sign_up
-      pre_token_generation           = var.lambda_pre_token_generation
-      user_migration                 = var.lambda_user_migration
-      verify_auth_challenge_response = var.lambda_verify_auth_challenge_response
-      kms_key_id                     = var.lambda_kms_key_arn
-      custom_email_sender {
-        lambda_arn     = var.lambda_custom_email_sender.lambda_arn
-        lambda_version = var.lambda_custom_email_sender.lambda_version
-      }
+  lambda_config {
+    create_auth_challenge          = var.lambda_create_auth_challenge
+    custom_message                 = var.lambda_custom_message
+    define_auth_challenge          = var.lambda_define_auth_challenge
+    post_authentication            = var.lambda_post_authentication
+    post_confirmation              = var.lambda_post_confirmation
+    pre_authentication             = var.lambda_pre_authentication
+    pre_sign_up                    = var.lambda_pre_sign_up
+    pre_token_generation           = var.lambda_pre_token_generation
+    user_migration                 = var.lambda_user_migration
+    verify_auth_challenge_response = var.lambda_verify_auth_challenge_response
+    kms_key_id                     = var.lambda_kms_key_arn
+    custom_email_sender {
+      lambda_arn     = var.lambda_custom_email_sender.lambda_arn
+      lambda_version = var.lambda_custom_email_sender.lambda_version
     }
   }
+
 
   # Configuration block for Short Message Service (SMS) settings.
   # These settings apply to SMS user verification and SMS Multi-Factor Authentication (MFA).
