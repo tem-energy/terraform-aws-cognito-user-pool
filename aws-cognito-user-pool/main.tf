@@ -138,7 +138,7 @@ resource "aws_cognito_user_pool" "user_pool" {
       var.lambda_verify_auth_challenge_response,
       var.lambda_custom_email_sender,
       var.lambda_kms_key_arn
-    ), null) == null ? [] : [true]
+    ), [])
 
     content {
       create_auth_challenge          = var.lambda_create_auth_challenge
@@ -153,8 +153,8 @@ resource "aws_cognito_user_pool" "user_pool" {
       verify_auth_challenge_response = var.lambda_verify_auth_challenge_response
       kms_key_id                     = var.lambda_kms_key_arn
       custom_email_sender {
-        lambda_arn                   = var.lambda_custom_email_sender.lambda_arn
-        lambda_version               = var.lambda_custom_email_sender.lambda_version
+        lambda_arn     = var.lambda_custom_email_sender.lambda_arn
+        lambda_version = var.lambda_custom_email_sender.lambda_version
       }
     }
   }
