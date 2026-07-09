@@ -162,6 +162,14 @@ resource "aws_cognito_user_pool" "user_pool" {
   # https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-advanced-security.html
   user_pool_add_ons {
     advanced_security_mode = var.advanced_security_mode
+
+    dynamic "advanced_security_additional_flows" {
+      for_each = var.custom_auth_enforcement_mode != null ? [1] : []
+
+      content {
+        custom_auth_mode = var.custom_auth_enforcement_mode
+      }
+    }
   }
 
   verification_message_template {
