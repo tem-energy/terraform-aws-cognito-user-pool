@@ -25,7 +25,7 @@ provider "aws" {
 
 # DO NOT RENAME MODULE NAME
 module "test" {
-  source = "../.."
+  source = "../../aws-cognito-user-pool"
 
   module_enabled = true
 

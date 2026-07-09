@@ -134,6 +134,10 @@ for details and use-cases.
 
   Default is `"OFF"`.
 
+- [**`custom_auth_enforcement_mode`**](#var-custom_auth_enforcement_mode): *(Optional `string`)*<a name="var-custom_auth_enforcement_mode"></a>
+
+  Threat protection enforcement mode for custom authentication (e.g. magic-link/passwordless) sign-ins, must be one of `AUDIT` or `ENFORCED`. Leave as `null` to omit the block and use Cognito's default (no enforcement). Requires AWS provider >= 5.98.0.
+
 - [**`alias_attributes`**](#var-alias_attributes): *(Optional `set(string)`)*<a name="var-alias_attributes"></a>
 
   Attributes supported as an alias for this user pool. Possible values: `phone_number`, `email`, or `preferred_username`. Conflicts with `username_attributes`. Default applies if `username_attributes` is not set.
