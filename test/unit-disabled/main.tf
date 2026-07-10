@@ -14,7 +14,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.0"
+      version = ">= 5.98.0, < 6.0.0"
     }
   }
 }
@@ -25,7 +25,7 @@ provider "aws" {
 
 # DO NOT RENAME MODULE NAME
 module "test" {
-  source = "../.."
+  source = "../../aws-cognito-user-pool"
 
   name = "example-cognito-user-pool"
 

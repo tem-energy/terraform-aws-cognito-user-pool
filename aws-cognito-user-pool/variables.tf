@@ -27,6 +27,12 @@ variable "advanced_security_mode" {
   default     = "OFF"
 }
 
+variable "custom_auth_enforcement_mode" {
+  type        = string
+  description = "(Optional) Threat protection enforcement mode for custom authentication (e.g. magic-link/passwordless) sign-ins, must be one of `AUDIT` or `ENFORCED`. Leave as null to omit the block and use Cognito's default (no enforcement). Requires AWS provider >= 5.98.0."
+  default     = null
+}
+
 variable "alias_attributes" {
   type        = set(string)
   description = "(Optional) Attributes supported as an alias for this user pool. Possible values: 'phone_number', 'email', or 'preferred_username'. Conflicts with username_attributes."

@@ -16,7 +16,7 @@ terraform {
       source = "hashicorp/aws"
       # always test with exact version to catch unsupported blocks/arguments early
       # this should match the minimal version in versions.tf
-      version = "3.50.0"
+      version = "5.98.0"
     }
   }
 }
@@ -27,7 +27,7 @@ provider "aws" {
 
 # DO NOT RENAME MODULE NAME
 module "test" {
-  source = "../.."
+  source = "../../aws-cognito-user-pool"
 
   name = "example-cognito-user-pool"
 

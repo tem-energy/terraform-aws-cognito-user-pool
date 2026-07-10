@@ -160,6 +160,13 @@ section {
           END
         }
 
+        variable "custom_auth_enforcement_mode" {
+          type        = string
+          description = <<-END
+            Threat protection enforcement mode for custom authentication (e.g. magic-link/passwordless) sign-ins, must be one of `AUDIT` or `ENFORCED`. Leave as `null` to omit the block and use Cognito's default (no enforcement). Requires AWS provider >= 5.98.0.
+          END
+        }
+
         variable "alias_attributes" {
           type        = set(string)
           description = <<-END

@@ -1,6 +1,6 @@
 module github.com/mineiros-io/terraform-aws-cognito-user-pool
 
-go 1.23.0
+go 1.23
 
 require (
 	github.com/gruntwork-io/terratest v0.40.0
