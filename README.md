@@ -299,6 +299,18 @@ for details and use-cases.
 
   The ARN of an AWS Lambda that allows customization of identity token claims before token generation.
 
+- [**`lambda_pre_token_generation_config`**](#var-lambda_pre_token_generation_config): *(Optional `object(lambda_pre_token_generation_config)`)*<a name="var-lambda_pre_token_generation_config"></a>
+
+  Configuration block for a pre-token generation Lambda trigger.
+
+  - [**`lambda_arn`**](#attr-lambda_pre_token_generation_config-lambda_arn): *(**Required** `string`)*<a name="attr-lambda_pre_token_generation_config-lambda_arn"></a>
+
+    The Lambda Amazon Resource Name of the Lambda function that Amazon Cognito triggers before token generation.
+
+  - [**`lambda_version`**](#attr-lambda_pre_token_generation_config-lambda_version): *(**Required** `string`)*<a name="attr-lambda_pre_token_generation_config-lambda_version"></a>
+
+    The event version Amazon Cognito uses when invoking the Lambda. Supported values are `V1_0`, `V2_0`, and `V3_0`.
+
 - [**`lambda_user_migration`**](#var-lambda_user_migration): *(Optional `string`)*<a name="var-lambda_user_migration"></a>
 
   The ARN of he user migration AWS Lambda config type.

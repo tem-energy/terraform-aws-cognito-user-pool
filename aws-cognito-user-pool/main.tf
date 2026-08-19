@@ -136,6 +136,14 @@ resource "aws_cognito_user_pool" "user_pool" {
     user_migration                 = var.lambda_user_migration
     verify_auth_challenge_response = var.lambda_verify_auth_challenge_response
     kms_key_id                     = var.lambda_kms_key_arn
+    dynamic "pre_token_generation_config" {
+      for_each = var.lambda_pre_token_generation_config != null ? [var.lambda_pre_token_generation_config] : []
+
+      content {
+        lambda_arn     = pre_token_generation_config.value.lambda_arn
+        lambda_version = pre_token_generation_config.value.lambda_version
+      }
+    }
     custom_email_sender {
       lambda_arn     = var.lambda_custom_email_sender.lambda_arn
       lambda_version = var.lambda_custom_email_sender.lambda_version
