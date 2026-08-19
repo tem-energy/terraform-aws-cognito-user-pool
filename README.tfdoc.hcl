@@ -403,6 +403,29 @@ section {
           END
         }
 
+        variable "lambda_pre_token_generation_config" {
+          type        = object(lambda_pre_token_generation_config)
+          description = <<-END
+            Configuration block for a pre-token generation Lambda trigger.
+          END
+
+          attribute "lambda_arn" {
+            required    = true
+            type        = string
+            description = <<-END
+              The Lambda Amazon Resource Name of the Lambda function that Amazon Cognito triggers before token generation.
+            END
+          }
+
+          attribute "lambda_version" {
+            required    = true
+            type        = string
+            description = <<-END
+              The event version Amazon Cognito uses when invoking the Lambda. Supported values are `V1_0`, `V2_0`, and `V3_0`.
+            END
+          }
+        }
+
         variable "lambda_user_migration" {
           type        = string
           description = <<-END

@@ -423,6 +423,15 @@ variable "lambda_pre_token_generation" {
   default     = null
 }
 
+variable "lambda_pre_token_generation_config" {
+  description = "(Optional) Configuration block for a pre-token generation Lambda trigger. Supported Lambda versions are V1_0, V2_0, and V3_0."
+  type = object({
+    lambda_arn     = string
+    lambda_version = string
+  })
+  default = null
+}
+
 variable "lambda_user_migration" {
   type        = string
   description = "(Optional) The ARN of the user migration AWS Lambda config type."
